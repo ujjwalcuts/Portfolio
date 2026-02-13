@@ -3,172 +3,307 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ujjwal Kumar's Portfolio</title>
+    <title>Ujjwal Kumar | Performance Video Editor</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
+        :root {
+            --bg: #0F0F0F;
+            --card: #1A1A1A;
+            --border: #2A2A2A;
+            --heading: #FFFFFF;
+            --body: #A1A1A1;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #000;
-            color: #fff;
+            background-color: var(--bg);
+            color: var(--body);
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
         }
-        .container {
-            max-width: 1200px;
+
+        /* Typography */
+        .name-heading {
+            color: var(--heading);
+            font-weight: 700;
+            letter-spacing: -0.03em;
         }
-        /* Custom styles for video responsiveness */
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
+
+        .section-title {
+            color: var(--heading);
+            font-weight: 700;
+            font-size: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .stats-text {
+            color: #D4D4D4;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .positioning-line {
+            color: var(--body);
+            font-weight: 600; /* Strengthened per instructions (500-600) */
+            line-height: 1.25; /* Reduced excess line-height for tighter composition */
+            max-width: 600px;
+        }
+
+        /* Portrait Styling */
+        .portrait-container {
+            filter: grayscale(100%) contrast(110%);
+            border: 1px solid var(--border);
+        }
+
+        @media (max-width: 767px) {
+            .portrait-mobile {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                margin: 0 auto 2rem auto;
+                object-fit: cover;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .portrait-desktop {
+                width: 100%;
+                max-width: 420px;
+                aspect-ratio: 4/5;
+                border-radius: 24px;
+                object-fit: cover;
+            }
+        }
+
+        /* Buttons */
+        .btn-premium {
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background-color: var(--card);
+            color: var(--heading);
+            border: 1px solid var(--border);
+        }
+
+        .btn-primary:hover {
+            background-color: #252525;
+            border-color: #404040;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--body);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--heading);
+            color: var(--heading);
+            transform: translateY(-1px);
+        }
+
+        /* Video Components */
+        .video-wrapper {
+            background: #000;
+            border-radius: 12px;
+            border: 1px solid var(--border);
             overflow: hidden;
-            border-radius: 0.75rem; /* rounded-xl */
+            position: relative;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .video-container.short-form {
-            padding-bottom: 177.77%; /* 9:16 Aspect Ratio */
+        .video-wrapper:hover {
+            transform: scale(1.02);
+            border-color: #444;
         }
-        .video-container video {
+        .aspect-9-16 { padding-bottom: 177.77%; }
+        .aspect-16-9 { padding-bottom: 56.25%; }
+        
+        .video-wrapper video {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
+        }
+
+        .section-description {
+            color: var(--body);
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        .micro-result {
+            font-size: 0.8rem;
+            color: #A1A1A1;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .section-divider {
+            height: 1px;
+            background-color: var(--border);
             width: 100%;
-            height: 100%;
+            margin: 100px 0;
         }
     </style>
 </head>
-<body class="p-4 md:p-8">
+<body class="px-6">
 
-    <!-- Header Section - Contains the profile photo, name, and bio -->
-    <header class="flex flex-col items-center justify-center text-center py-12 md:py-16">
-        <!-- Circular Photo with a subtle hover effect -->
-        <div class="w-32 h-32 md:w-40 md:h-40 bg-gray-700 rounded-full overflow-hidden mb-4 border-4 border-gray-600 shadow-lg transition-transform duration-300 hover:scale-105">
-            <!-- Replace this placeholder with your actual photo URL -->
-            <img src="1758792706043.jpg" alt="Your photo" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/160x160/24292e/fff?text=Your+Photo'">
+    <!-- HERO SECTION -->
+    <header class="max-w-6xl mx-auto pt-20 md:pt-32 pb-24">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-16">
+            
+            <!-- Mobile Portrait -->
+            <div class="md:hidden">
+                <img src="1758792706043.jpg" alt="Ujjwal Kumar" class="portrait-container portrait-mobile" onerror="this.src='https://placehold.co/400x500/1A1A1A/FFFFFF?text=UK'">
+            </div>
+
+            <!-- Left Side: Content -->
+            <div class="flex-1 text-center md:text-left">
+                <h1 class="text-5xl md:text-7xl name-heading mb-10">Ujjwal Kumar</h1>
+
+                <div class="flex items-center justify-center md:justify-start gap-4 md:gap-8 stats-text mb-8 md:mb-8">
+                    <span>100+ Videos</span>
+                    <span class="w-[1px] h-3 bg-[#2A2A2A]"></span>
+                    <span>2+ Years</span>
+                    <span class="w-[1px] h-3 bg-[#2A2A2A]"></span>
+                    <span>7.8/10 Rated</span>
+                </div>
+
+                <!-- Headline Description with adjusted margins -->
+                <p class="text-xl md:text-2xl positioning-line mt-6 md:mt-8 mb-10 md:mb-12 mx-auto md:mx-0">
+                    I build videos that keep viewers watching.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="#work" class="btn-premium btn-primary">View Work</a>
+                    <a href="#contact" class="btn-premium btn-secondary">Start a Project</a>
+                </div>
+            </div>
+
+            <!-- Right Side: Portrait -->
+            <div class="hidden md:block flex-1 flex justify-end">
+                <img src="1758792706043.jpg" alt="Ujjwal Kumar" class="portrait-container portrait-desktop" onerror="this.src='https://placehold.co/400x500/1A1A1A/FFFFFF?text=UK'">
+            </div>
         </div>
-        <!-- Name -->
-        <h1 class="text-3xl md:text-4xl font-bold text-white mb-2">Ujjwal Kumar</h1>
-        <!-- Short Bio -->
-        <p class="text-base md:text-lg text-gray-300">Crafting cinematic edits, smooth transitions & engaging cuts. From reels to full-length videos, I turn raw clips into polished stories that connect, inspire & entertain.</p>
     </header>
 
-    <main class="container mx-auto">
-        
-
-        <!-- Work Section - Showcasing different projects -->
-        <section class="mb-12">
-            <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-white text-center">My Projects</h2>
-            
-            <!-- Short-Form Content -->
-            <div class="mb-10">
-                <h3 class="text-xl md:text-2xl font-medium mb-4 text-gray-200">Short-Form</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Placeholder Video 1 - Remember to replace the video src URL -->
-                    <div class="w-full rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105">
-                        <div class="video-container short-form">
-                            <video src="Podcast1.mp4" controls muted playsinline></video>
-                        </div>
-                        <p class="text-sm md:text-base text-gray-400 p-2">I edited this with smooth cuts, styled text, and subtle motion.</p></div>
-                    <!-- Placeholder Video 2 - Remember to replace the video src URL -->
-                    <div class="w-full rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105">
-                        <div class="video-container short-form">
-                            <video src="Reel1.mp4" controls muted playsinline></video>
-                        </div>
-                        <p class="text-sm md:text-base text-gray-400 p-2">A quick tutorial video for Video Editing. Focused on clear visuals and on-screen text.</p>
-                    </div>
-                     <!-- Placeholder Video 2 - Remember to replace the video src URL -->
-                    <div class="w-full rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105">
-                        <div class="video-container short-form">
-                            <video src="Podcast2.mp4" controls muted playsinline></video>
-                        </div>
-                        <p class="text-sm md:text-base text-gray-400 p-2">I have used high-quality motion graphics in this video and tried to give it a slight documentary feel.
-                        </p>
-                        
-                        <!-- Placeholder Video 2 - Remember to replace the video src URL -->
-                    <div class="w-full rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105">
-                        <div class="video-container short-form">
-                            <video src="1.mp4" controls muted playsinline></video>
-                        </div>
-                        <p class="text-sm md:text-base text-gray-400 p-2">Clean motion graphics with sharp, minimal captions for a smooth and professional look.
-
-
-                        </p>
-                        
-                            
-                        <!-- Placeholder Video 2 - Remember to replace the video src URL -->
-                    <div class="w-full rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105">
-                        <div class="video-container short-form">
-                            <video src="2.mp4" controls muted playsinline></video>
-                        </div>
-                        <p class="text-sm md:text-base text-gray-400 p-2">Clean and minimal edit.
-
-
-                        </p>
-                    
-                </div>
+    <main class="max-w-6xl mx-auto pb-32">
+        <!-- SHORT-FORM SECTION -->
+        <section id="work" class="mt-[100px]">
+            <div class="mb-10 text-center md:text-left">
+                <h2 class="section-title">Short-Form Edits</h2>
             </div>
 
-            <!-- Long-Form Content --
-            <div class="mb-10">
-                <h3 class="text-xl md:text-2xl font-medium mb-4 text-gray-200">Long-Form</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Placeholder Video 1 - Remember to replace the video src URL --
-                    <div class="w-full rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105">
-                        <div class="video-container">
-                            <video src="Reel1.mp4" controls muted></video>
-                        </div>
-                        <p class="text-sm md:text-base text-gray-400 p-2">An interview-style documentary. My role included color grading, sound mixing, and seamless transitions.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="group">
+                    <div class="video-wrapper aspect-9-16 mb-4">
+                        <video src="Podcast1.mp4" controls muted playsinline></video>
                     </div>
-                    <!-- Placeholder Video 2 - Remember to replace the video src URL --
-                    <div class="w-full rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105">
-                        <div class="video-container">
-                            <video src="https://www.w3schools.com/html/mov_bbb.mp4" controls muted></video>
-                        </div>
-                        <p class="text-sm md:text-base text-gray-400 p-2">A long-form vlog project. I handled all editing, B-roll selection, and music syncing.</p>
+                    <h3 class="text-white font-semibold mb-1">Podcast Narrative</h3>
+                    <div class="micro-result">
+                        <i class="fas fa-chart-line text-[10px]"></i> +40% Avg. Watch Time
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="video-wrapper aspect-9-16 mb-4">
+                        <video src="Reel1.mp4" controls muted playsinline></video>
+                    </div>
+                    <h3 class="text-white font-semibold mb-1">Creator Insight</h3>
+                    <div class="micro-result">
+                        <i class="fas fa-eye text-[10px]"></i>2.5k Views
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="video-wrapper aspect-9-16 mb-4">
+                        <video src="1.mp4" controls muted playsinline></video>
+                    </div>
+                    <h3 class="text-white font-semibold mb-1">Visual Storytelling</h3>
+                    <div class="micro-result">
+                        <i class="fas fa-bolt text-[10px]"></i> 30% Retention Boost
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="video-wrapper aspect-9-16 mb-4">
+                        <video src="2.mp4" controls muted playsinline></video>
+                    </div>
+                    <h3 class="text-white font-semibold mb-1">Podcast Narrative</h3>
+                    <div class="micro-result">
+                        <i class="fas fa-bolt text-[10px]"></i> 40% Retention Boost
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="video-wrapper aspect-9-16 mb-4">
+                        <video src="Podcast2.mp4" controls muted playsinline></video>
+                    </div>
+                    <h3 class="text-white font-semibold mb-1">Creator Insight</h3>
+                    <div class="micro-result">
+                        <i class="fas fa-chart-line mr-1-[10px]"></i> +35% Engagement
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Software I Use Section - Displaying as a horizontal list -->
-                <br>
-        <section class="mb-12">
-            <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-white text-center">Software I Use</h2>
-            <div class="flex justify-center flex-wrap gap-4 md:gap-8">
-                <span class="text-lg md:text-xl font-semibold text-gray-300 transition-colors duration-300 hover:text-white">Alight Motion</span>
-                <span class="text-lg md:text-xl font-semibold text-gray-300 transition-colors duration-300 hover:text-white">CapCut</span>
-                <span class="text-lg md:text-xl font-semibold text-gray-300 transition-colors duration-300 hover:text-white">InShot</span>
+        <!-- SUBTLE DIVIDER 
+        <div class="section-divider"></div>
+        -->
+
+        <!-- LONG-FORM SECTION 
+        <section id="long-form" class="mt-[100px]">
+            <div class="mb-10 text-center md:text-left">
+                <h2 class="section-title">Long-Form Edits</h2>              
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="group">
+                    <div class="video-wrapper aspect-16-9 mb-4">
+                        <video src="Podcast2.mp4" controls muted playsinline poster="https://placehold.co/1280x720/1A1A1A/FFFFFF?text=Podcast+Showcase"></video>
+                    </div>
+                    <h3 class="text-white font-semibold text-lg mb-1">Podcast Post-Production</h3>
+                    <div class="micro-result">
+                        <i class="fas fa-users text-[10px]"></i> Boosted Engagement Rate
+                    </div>
+                </div>
+
+                <div class="group">
+                    <div class="video-wrapper aspect-16-9 mb-4">
+                        <video src="2.mp4" controls muted playsinline poster="https://placehold.co/1280x720/1A1A1A/FFFFFF?text=YouTube+Case+Study"></video>
+                    </div>
+                    <h3 class="text-white font-semibold text-lg mb-1">Brand Storytelling</h3>
+                    <div class="micro-result">
+                        <i class="fas fa-clock text-[10px]"></i> 12min Avg. View Duration
+                    </div>
+                </div>
             </div>
         </section>
-
-        <hr class="border-gray-800 my-8">
-
-        <!-- Contact Section -->
-        <section class="flex flex-col items-center justify-center text-center py-10">
-            <h2 class="text-2xl md:text-3xl font-semibold mb-4 text-white">Contact Me</h2>
-            <p class="text-base md:text-lg text-gray-300 mb-6">If you have a project, feel free to contact me!</p>
-            <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 w-full max-w-sm">
-                <!-- Email Button with a hover effect -->
-                <a href="mailto:contact.ujjwalcuts@gmail.com" class="w-full py-3 px-6 rounded-lg text-lg font-semibold bg-white text-black shadow-lg hover:bg-gray-200 transition-colors duration-300">
-                    <i class="fas fa-envelope mr-2"></i>Email Me
-                </a>
-                <!-- WhatsApp Button with a hover effect -->
-                <a href="https://wa.me/9162549229" class="w-full py-3 px-6 rounded-lg text-lg font-semibold bg-white text-black shadow-lg hover:bg-gray-200 transition-colors duration-300">
-                    <i class="fab fa-whatsapp mr-2"></i>WhatsApp
-                </a>
-            </div>
-        </section>
-
+        -->
     </main>
 
-    <!-- Footer Section -->
-    <footer class="text-center text-gray-500 text-sm py-8">
-        <div class="mb-4 flex justify-center space-x-6">
-            <!-- Placeholder for social media links 
-            <a href="#" class="hover:text-white transition-colors"><i class="fab fa-instagram text-xl"></i></a>
-            <a href="#" class="hover:text-white transition-colors"><i class="fab fa-youtube text-xl"></i></a>
-            <a href="#" class="hover:text-white transition-colors"><i class="fab fa-behance text-xl"></i></a>
-        </div>-->
-        <p>&copy; 2025 Ujjwal Kumar. All rights reserved.</p>
+    <!-- UPGRADED CTA SECTION -->
+    <section id="contact" class="max-w-6xl mx-auto mb-32">
+        <div class="bg-[#1A1A1A] border border-[#2A2A2A] rounded-[32px] p-16 md:p-24 text-center">
+            <h2 class="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">Get Started</h2>
+            <p class="text-[#A1A1A1] text-lg md:text-xl mb-12 max-w-xl mx-auto">Let’s build content that performs.</p>
+            <div class="flex flex-col sm:flex-row gap-5 justify-center">
+                <a href="mailto:contact.ujjwalcuts@gmail.com" class="btn-premium btn-primary px-12 text-lg">Email Inquiry</a>
+                <a href="https://wa.me/9162549229" class="btn-premium btn-secondary px-12 text-lg">WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 border-t border-[#2A2A2A] text-center">
+        <p class="text-[10px] uppercase tracking-[0.5em] opacity-30">&copy; 2026 Ujjwal's portfolio</p>
     </footer>
 
 </body>
